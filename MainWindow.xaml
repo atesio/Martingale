@@ -1,0 +1,26 @@
+﻿<Window
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:Martingale" x:Class="Martingale.MainWindow"
+        Title="MainWindow" Height="350" Width="578.333">
+    <Window.Resources>
+        <local:SessionParameters x:Key="MyParameters" StartMoney="1000" BetIncrease="2" MaxBet="100" MaxGames="500" MinBet="1" WinPercent="48.65"/>
+    </Window.Resources>
+    <Grid>
+        <Label Content="Combien d'argent tu as sur toi au début:" HorizontalAlignment="Left" Height="25" Margin="10,11,0,0" VerticalAlignment="Top" Width="210"/>
+        <TextBox HorizontalAlignment="Left" Height="18" Margin="225,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="93" Text="{Binding Source={StaticResource MyParameters}, Path=StartMoney}"/>
+        <Button Content="Lancer" Height="26" Margin="335,12,10.333,0" VerticalAlignment="Top" Click="Button_Click" />
+        <Label Content="Mise minimale au début d'une partie:" HorizontalAlignment="Left" Height="25" Margin="10,39,0,0" VerticalAlignment="Top" Width="210"/>
+        <TextBox HorizontalAlignment="Left" Height="18" Margin="225,40,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="93" Text="{Binding MinBet, Source={StaticResource MyParameters}}"/>
+        <Label Content="Multiplicateur pour la mise suivante:" HorizontalAlignment="Left" Height="25" Margin="10,65,0,0" VerticalAlignment="Top" Width="210"/>
+        <TextBox HorizontalAlignment="Left" Height="18" Margin="225,67,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="93" Text="{Binding BetIncrease, Source={StaticResource MyParameters}}"/>
+        <Label Content="Mise maximale:" HorizontalAlignment="Left" Height="25" Margin="10,92,0,0" VerticalAlignment="Top" Width="210"/>
+        <TextBox HorizontalAlignment="Left" Height="18" Margin="225,95,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="93" Text="{Binding MaxBet, Source={StaticResource MyParameters}}"/>
+        <Label  Content="Tu rentres te coucher après ce nombre de parties:" HorizontalAlignment="Left" Height="25" Margin="10,120,0,0" VerticalAlignment="Top" Width="210"/>
+        <TextBox HorizontalAlignment="Left" Height="18" Margin="225,122,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="93" Text="{Binding MaxGames, Source={StaticResource MyParameters}}"/>
+        <Label Content="Ton pourcentage de changes de gagner un tirage:" HorizontalAlignment="Left" Height="25" Margin="10,147,0,0" VerticalAlignment="Top" Width="210"/>
+        <TextBox HorizontalAlignment="Left" Height="18" Margin="226,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="93" Text="{Binding WinPercent, Source={StaticResource MyParameters}}"/>
+        <TextBlock x:Name="TextResults" Height="114" Margin="335,54,10.333,0" TextWrapping="Wrap" VerticalAlignment="Top"/>
+        <DataGrid x:Name="GridMasterResults" Margin="10,185,236.333,16.333"/>
+    </Grid>
+</Window>
